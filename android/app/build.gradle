@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.arabictrivia.millionaire"
+    compileSdk 35
+    // NDK r27+ is required to ensure 16 KB page-size compatibility
+    ndkVersion "27.1.12297006"
+
+    defaultConfig {
+        applicationId "com.arabictrivia.millionaire"
+        minSdk 21
+        targetSdk 35
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
+        ndk {
+            // Focus on 64-bit architectures supporting 16 KB pages
+            abiFilters "arm64-v8a", "x86_64", "armeabi-v7a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                // Enforce 16 KB max page alignment for native C/C++ binaries
+                arguments "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON",
+                          "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
