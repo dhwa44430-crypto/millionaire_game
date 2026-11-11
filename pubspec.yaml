@@ -1,0 +1,29 @@
+name: arabic_trivia_millionaire
+description: A production-ready Arabic Trivia Quiz Game.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_mobile_ads: ^5.2.0
+  sqflite: ^2.4.1
+  path: ^1.9.0
+  provider: ^6.1.2
+  audioplayers: ^6.1.0
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
