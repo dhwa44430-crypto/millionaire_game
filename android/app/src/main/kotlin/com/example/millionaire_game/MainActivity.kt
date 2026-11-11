@@ -1,4 +1,4 @@
-package com.example.millionaire_game
+package com.example.arabic_trivia_millionaire
 
 import io.flutter.embedding.android.FlutterActivity
 
